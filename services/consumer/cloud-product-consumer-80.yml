@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active: dev # 激活开发环境配置
+---
+spring:
+  profiles: dev # 开发环境
+  application:
+    name: cloud-product-consumer #这个很重要，这在以后的服务与服务之间相互调用一般都是根据这个name
+server:
+  port: 80
+eureka:
+  client:
+    registerWithEureka: false # 服务注册，false表示不将本消费者注册到 Eureka 服务器
+    fetchRegistry: true # 服务发现，true从 Eureka 服务器中获取注册信息
+    serviceUrl:
+      defaultZone: http://local.eureka6001.com:6001/eureka/,http://local.eureka6002.com:6002/eureka/
+  instance:
+    instanceId: ${spring.application.name}:${server.port} # 指定实例ID,就不会显示主机名了
+    preferIpAddress: true #访问路径可以显示IP地址
+# 需要开启 hystrix
+feign:
+  hystrix:
+    enabled: true
+---
+spring:
+  profiles: prod # 生成环境
+  application:
+    name: cloud-product-consumer #这个很重要，这在以后的服务与服务之间相互调用一般都是根据这个name
+server:
+  port: 80
+eureka:
+  client:
+    registerWithEureka: false # 服务注册，false表示不将本消费者注册到 Eureka 服务器
+    fetchRegistry: true # 服务发现，true从 Eureka 服务器中获取注册信息
+    serviceUrl:
+      defaultZone: http://local.eureka6001.com:6001/eureka/,http://local.eureka6002.com:6002/eureka/
+  instance:
+    instanceId: ${spring.application.name}:${server.port} # 指定实例ID,就不会显示主机名了
+    preferIpAddress: true #访问路径可以显示IP地址
+# 需要开启 hystrix
+feign:
+  hystrix:
+    enabled: true
