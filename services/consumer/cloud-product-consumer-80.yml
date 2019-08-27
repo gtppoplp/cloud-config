@@ -13,7 +13,7 @@ eureka:
     registerWithEureka: false # 服务注册，false表示不将本消费者注册到 Eureka 服务器
     fetchRegistry: true # 服务发现，true从 Eureka 服务器中获取注册信息
     serviceUrl:
-      defaultZone: http://local.eureka6001.com:6001/eureka/,http://local.eureka6002.com:6002/eureka/
+      defaultZone: http://${security.config.username}:${security.config.password}@local.eureka6001.com:6001/eureka/,http://${security.config.username}:${security.config.password}@local.eureka6002.com:6002/eureka/
   instance:
     instanceId: ${spring.application.name}:${server.port} # 指定实例ID,就不会显示主机名了
     preferIpAddress: true #访问路径可以显示IP地址
@@ -21,6 +21,11 @@ eureka:
 feign:
   hystrix:
     enabled: true
+
+security:
+  config:
+    username: gtppoplp
+    password: ABCDlirong801
 ---
 spring:
   profiles: prod # 生成环境
@@ -33,7 +38,7 @@ eureka:
     registerWithEureka: false # 服务注册，false表示不将本消费者注册到 Eureka 服务器
     fetchRegistry: true # 服务发现，true从 Eureka 服务器中获取注册信息
     serviceUrl:
-      defaultZone: http://local.eureka6001.com:6001/eureka/,http://local.eureka6002.com:6002/eureka/
+      defaultZone: http://${security.config.username}:${security.config.password}@local.eureka6001.com:6001/eureka/,http://${security.config.username}:${security.config.password}@local.eureka6002.com:6002/eureka/
   instance:
     instanceId: ${spring.application.name}:${server.port} # 指定实例ID,就不会显示主机名了
     preferIpAddress: true #访问路径可以显示IP地址
@@ -41,3 +46,8 @@ eureka:
 feign:
   hystrix:
     enabled: true
+
+security:
+  config:
+    username: gtppoplp
+    password: ABCDlirong801

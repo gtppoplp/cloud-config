@@ -29,7 +29,7 @@ eureka:
     registerWithEureka: true # 服务注册开关
     fetchRegistry: true # 服务发现开关
     serviceUrl: # 注册到哪一个Eureka Server服务注册中心，多个中间用逗号分隔
-      defaultZone: http://local.eureka6001.com:6001/eureka,http://local.eureka6002.com:6002/eureka
+      defaultZone: http://${security.config.username}:${security.config.password}@local.eureka6001.com:6001/eureka,http://${security.config.username}:${security.config.password}@local.eureka6002.com:6002/eureka
   instance:
     instanceId: ${spring.application.name}:${server.port} # 指定实例ID,就不会显示主机名了
     preferIpAddress: true #访问路径可以显示IP地址
@@ -40,6 +40,11 @@ management:
     web:
       exposure:
         include: hystrix.stream
+
+security:
+  config:
+    username: gtppoplp
+    password: ABCDlirong801
 ---
 server:
   port: 8002
@@ -68,7 +73,7 @@ eureka:
     registerWithEureka: true # 服务注册开关
     fetchRegistry: true # 服务发现开关
     serviceUrl: # 注册到哪一个Eureka Server服务注册中心，多个中间用逗号分隔
-      defaultZone: http://local.eureka6001.com:6001/eureka,http://local.eureka6002.com:6002/eureka
+      defaultZone: http://${security.config.username}:${security.config.password}@local.eureka6001.com:6001/eureka,http://${security.config.username}:${security.config.password}@local.eureka6002.com:6002/eureka
   instance:
     instanceId: ${spring.application.name}:${server.port} # 指定实例ID,就不会显示主机名了
     preferIpAddress: true #访问路径可以显示IP地址
@@ -79,3 +84,8 @@ management:
     web:
       exposure:
         include: hystrix.stream
+
+security:
+  config:
+    username: gtppoplp
+    password: ABCDlirong801
